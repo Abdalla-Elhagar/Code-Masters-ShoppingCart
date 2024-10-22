@@ -18,10 +18,10 @@ let selectedUser = JSON.parse(localStorage.getItem("selectedUser"));
 if (localStorage.getItem("selectedUser")) {
     userName.textContent = selectedUser.name;
 }
-let Count = selectedUser.cart.length;
-Count >= 0 ? Count = selectedUser.cart.length : Count = 0;
-cartCount.textContent = Count
-Count > 0 ? cartCount.style.display = "flex" : cartCount.style.display = "none";
+
+selectedUser.cart.length > 0  ? cartCount.textContent = selectedUser.cart.length : selectedUser.cart = 0;
+cartCount.textContent = selectedUser.cart.length
+selectedUser.cart.length > 0 ? cartCount.style.display = "flex" : cartCount.style.display = "none";
 
 
 function fetchProducts() {
@@ -81,8 +81,8 @@ function displayProductData(products) {
         selectedUser.cart = [...selectedUser.cart,product]
         localStorage.setItem("selectedUser", JSON.stringify(selectedUser))
         addselectedToUserData(selectedUser.id ,selectedUser.cart)
-        Count >= 0 ? cartCount.style.display = "flex" : cartCount.style.display = "none";
-        cartCount.textContent = Count;
+        selectedUser.cart.length >= 0 ? cartCount.style.display = "flex" : cartCount.style.display = "none";
+        cartCount.textContent = selectedUser.cart.length;
 
 
     }
