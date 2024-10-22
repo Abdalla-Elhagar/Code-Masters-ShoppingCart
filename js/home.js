@@ -1,5 +1,9 @@
 
 
+
+let cartCount = document.querySelector(".cartCount");
+
+
 const userName = document.getElementById("UserName"),
 logOut = document.getElementById("LogOut");
 let UserData = JSON.parse(localStorage.getItem("userData"));
@@ -15,6 +19,8 @@ if (localStorage.getItem("selectedUser")) {
     userName.textContent = selectedUser.name;
 }
 
+cartCount.textContent = selectedUser.cart.length;
+selectedUser.cart.length > 0 ? cartCount.style.display = "flex" : cartCount.style.display = "none";
 
 
 function fetchProducts() {
@@ -23,6 +29,8 @@ function fetchProducts() {
             .then(products=> displayProductData(products))
 
 }
+
+
 
 
 
@@ -55,12 +63,14 @@ function displayProductData(products) {
         const addToCat = document.querySelectorAll(".addToCar")
         addToCat.forEach(button => {
             button.addEventListener("click", (e) => {
+                
                 const productElement = e.target.closest(".productBox")
                 const productId = productElement.getAttribute("data-id")
                 const product = products.find(p=>p.id == productId) 
                 let arrOfProducts = {productId:Date.now() , content: product}
                 addProductsToCustomerCart(arrOfProducts)
                 addTocartAlert()
+                
             })
         })
     }
@@ -70,6 +80,10 @@ function displayProductData(products) {
         selectedUser.cart = [...selectedUser.cart,product]
         localStorage.setItem("selectedUser", JSON.stringify(selectedUser))
         addselectedToUserData(selectedUser.id ,selectedUser.cart)
+        selectedUser.cart.length >= 0 ? cartCount.style.display = "flex" : cartCount.style.display = "none";
+        cartCount.textContent = selectedUser.cart.length;
+
+
     }
             
 fetchProducts()
@@ -93,6 +107,6 @@ function addTocartAlert() {
     alertBox.appendChild(alert)
     setTimeout(function() {
         alert.style.display = 'none'; 
-      }, 1500);
+      }, 3000);
 
 }

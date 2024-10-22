@@ -58,6 +58,6 @@ function RemoveAlert() {
     alertBox.appendChild(alert)
     setTimeout(function() {
         alert.style.display = 'none'; 
-      }, 1500);
+      }, 3000);
 
 }
