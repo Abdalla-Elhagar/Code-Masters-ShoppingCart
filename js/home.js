@@ -19,7 +19,7 @@ if (localStorage.getItem("selectedUser")) {
     userName.textContent = selectedUser.name;
 }
 
-cartCount.textContent = selectedUser.cart.length;
+cartCount.innerHTML = selectedUser.cart.length;
 selectedUser.cart.length > 0 ? cartCount.style.display = "flex" : cartCount.style.display = "none";
 
 
@@ -81,7 +81,7 @@ function displayProductData(products) {
         localStorage.setItem("selectedUser", JSON.stringify(selectedUser))
         addselectedToUserData(selectedUser.id ,selectedUser.cart)
         selectedUser.cart.length >= 0 ? cartCount.style.display = "flex" : cartCount.style.display = "none";
-        cartCount.textContent = selectedUser.cart.length;
+        cartCount.innerHTML = selectedUser.cart.length;
 
 
     }
