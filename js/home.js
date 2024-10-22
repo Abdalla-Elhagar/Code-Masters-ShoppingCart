@@ -19,7 +19,7 @@ if (localStorage.getItem("selectedUser")) {
     userName.textContent = selectedUser.name;
 }
 let Count = selectedUser.cart.length;
-
+Count >= 0 ? Count = selectedUser.cart.length : Count = 0;
 cartCount.textContent = Count
 Count > 0 ? cartCount.style.display = "flex" : cartCount.style.display = "none";
 
