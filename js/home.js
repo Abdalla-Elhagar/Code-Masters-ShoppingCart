@@ -18,18 +18,10 @@ let selectedUser = JSON.parse(localStorage.getItem("selectedUser"));
 if (localStorage.getItem("selectedUser")) {
     userName.textContent = selectedUser.name;
 }
-if (selectedUser && userName) {
-    userName.textContent = selectedUser.name;
-}
-if (!selectedUser) {
-    selectedUser = {id:'' ,name: '', email: '', pass: '', cart:[]};
-    localStorage.setItem("selectedUser", JSON.stringify(selectedUser));
-}
 
-if (cartCount && selectedUser.cart) {
-    cartCount.textContent = selectedUser.cart.length;
-    cartCount.style.display = selectedUser.cart.length > 0 ? "flex" : "none";
-}
+cartCount.textContent = selectedUser.cart.length;
+selectedUser.cart.length > 0 ? cartCount.style.display = "flex" : cartCount.style.display = "none";
+
 
 function fetchProducts() {
     fetch('https://fakestoreapi.com/products')

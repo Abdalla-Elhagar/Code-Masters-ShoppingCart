@@ -253,6 +253,7 @@ a:active {
     padding: 10px;
     box-shadow: 0 0 13px 0 #a4a4a4;
     position: relative;
+    top: 20px;
 
 }
 .Alert::before {
@@ -261,7 +262,17 @@ a:active {
     width: 5px;
     background-color: rgb(3, 209, 3);
     position: absolute;
-    top: 0;
     left: 0;
     margin-bottom: 10px;
+}
+.cartCount {
+    width: 20px;
+    height: 20px;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    border-radius: 9999px;
+    background-color: red;
+    top: -5px;
+    right: -5px;
 }
